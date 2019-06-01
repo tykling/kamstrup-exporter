@@ -4,7 +4,6 @@ import logging
 import yaml
 import os
 import datetime
-import requests
 import importlib
 from PyKamstrup.kamstrup import kamstrup
 
