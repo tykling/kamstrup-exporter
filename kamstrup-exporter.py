@@ -2,9 +2,6 @@ from prometheus_client import start_http_server, Gauge, Counter
 import time
 import logging
 import yaml
-import os
-import datetime
-import importlib
 from PyKamstrup.kamstrup import kamstrup
 
 # define default config
@@ -30,8 +27,6 @@ def read_config():
         return {}
 
 def process_request():
-    global adjusttimes
-
     for register in register_var:
         try:
             value, unit = kamstrup.readvar(register)
@@ -57,8 +52,8 @@ logger.debug("Running with config %s" % config)
 # initialise serial
 kamstrup = kamstrup(config['serialport'])
 
-# import register var
-register_var = importlib.import_module(config['registervar'])
+# get register var
+register_var = getattr(PyKamstrup.kamstrup, registervar)
 
 # define metrics
 metrics = {}
