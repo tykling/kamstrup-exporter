@@ -29,7 +29,7 @@ def read_config():
 def process_request():
     for register in register_var:
         try:
-            value, unit = kamstrup.readvar(register)
+            value, unit = meter.readvar(register)
         except IndexError:
             logger.error("Register %s does not exist on the meter" % register)
             continue
