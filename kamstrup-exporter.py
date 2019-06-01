@@ -2,7 +2,7 @@ from prometheus_client import start_http_server, Gauge, Counter
 import time
 import logging
 import yaml
-from PyKamstrup.kamstrup import kamstrup
+from PyKamstrup import kamstrup
 
 # define default config
 default_config = {
@@ -50,16 +50,16 @@ if fileconf:
 logger.debug("Running with config %s" % config)
 
 # initialise serial
-kamstrup = kamstrup(config['serialport'])
+meter = kamstrup.kamstrup(config['serialport'])
 
 # get register var
-register_var = getattr(PyKamstrup.kamstrup, registervar)
+register_var = getattr(kamstrup, registervar)
 
 # define metrics
 metrics = {}
 for register, name in register_var.items():
     try:
-        value, unit = kamstrup.readvar(register)
+        value, unit = meter.readvar(register)
     except IndexError:
         logger.error("Register %s does not exist on the meter" % register)
         continue
