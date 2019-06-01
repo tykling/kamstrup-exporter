@@ -53,7 +53,7 @@ logger.debug("Running with config %s" % config)
 meter = kamstrup.kamstrup(config['serialport'])
 
 # get register var
-register_var = getattr(kamstrup, registervar)
+register_var = getattr(kamstrup, config['registervar'])
 
 # define metrics
 metrics = {}
