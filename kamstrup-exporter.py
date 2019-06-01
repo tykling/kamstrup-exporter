@@ -34,7 +34,7 @@ def process_request():
             logger.error("Register %s does not exist on the meter" % register)
             continue
         if unit == "ASCII":
-            metrics[register].labels(asciistring=bytearray.fromhex(s2).decode('ascii')).set(1)
+            metrics[register].labels(asciistring=bytearray.fromhex(value).decode('ascii')).set(1)
         else:
             metrics[register].set(value)
 
