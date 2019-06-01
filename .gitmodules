@@ -1,0 +1,3 @@
+[submodule "PyKamstrup"]
+	path = PyKamstrup
+	url = https://github.com/tykling/PyKamstrup
