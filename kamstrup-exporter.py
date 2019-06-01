@@ -50,7 +50,8 @@ def process_request():
 # read config file
 fileconf = read_config()
 config = default_config
-config.update(fileconf)
+if fileconf:
+    config.update(fileconf)
 logger.debug("Running with config %s" % config)
 
 # initialise serial
