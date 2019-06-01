@@ -25,9 +25,9 @@ logger = logging.getLogger("kamstrup-exporter.%s" % __name__)
 def read_config():
     try:
         with open("kamstrup-exporter.yml") as f:
-            return (yaml.safe_load(f.read()), edittime)
+            return yaml.safe_load(f.read())
     except FileNotFoundError:
-        return ({}, 0)
+        return {}
 
 def process_request():
     global adjusttimes
