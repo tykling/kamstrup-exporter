@@ -67,9 +67,9 @@ for register, name in register_var.items():
         logger.error("Register %s does not exist on the meter" % register)
         continue
     if unit == "ASCII":
-        metrics[register] = Gauge('kamstrup_register_%s_%s' % (register, name), register, ['asciistring'])
+        metrics[register] = Gauge('kamstrup_register_%s_%s' % (register, name), str(register), ['asciistring'])
     else:
-        metrics[register] = Gauge('kamstrup_register_%s_%s' % (register, name), register)
+        metrics[register] = Gauge('kamstrup_register_%s_%s' % (register, name), str(register))
 
 start_http_server(config['webport'])
 
